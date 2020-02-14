@@ -20,12 +20,23 @@
 
     var UA;
     UA=navigator.userAgent;
+    var options;
      console.log(UA);
     
     if (UA.includes("Pinterest"))
     {
-    branch.init('key_live_ihIJdypmJaY3fhhNgf3XLeglzqc3YkQk');
+       options = { no_journeys: false };
+   
     }
+    else
+    {
+       options = { no_journeys: true };
+    
+        }
+        console.log("options", options);
+        branch.init('key_live_ihIJdypmJaY3fhhNgf3XLeglzqc3YkQk', options, function(err, data) {
+  console.log(err, data);
+});
   </script>
  <script>
    
