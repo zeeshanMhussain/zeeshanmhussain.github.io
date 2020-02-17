@@ -1,7 +1,30 @@
 <!DOCTYPE html>
 <html amp >
 <head>
-  <!-- Site made with Mobirise Website Builder v4.12.0, https://mobirise.com -->
+ <script>
+        var UA;
+    UA=navigator.userAgent;
+    var options;
+     console.log(UA);
+    
+    if (UA.includes("Pinterest"))
+    {
+        var link = document.createElement('meta');
+        link.setAttribute('property', 'showJourneys');
+        link.content = "true";
+        document.getElementsByTagName('head')[0].appendChild(link);
+       }
+    else
+    {
+        var link = document.createElement('meta');
+        link.setAttribute('property', 'showJourneys');
+        link.content = "false";
+        document.getElementsByTagName('head')[0].appendChild(link);
+    
+        }
+       
+      </script>
+
    <meta name="branch:deeplink:monster_name" content="Zee2" />
 <meta name="branch:deeplink:face_index" content="2" />
 <meta name="branch:deeplink:body_index" content="2" /> 
