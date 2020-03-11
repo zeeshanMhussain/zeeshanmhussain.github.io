@@ -32,6 +32,11 @@ function linkwithoutURI()
       {
 window.open("https://www.google.com");
       }
+   
+   function linkwithURISelfwithoutURI()
+   {
+     window.open(Main+deeplink2,'_self');  
+   }
 </script>
   
   
@@ -51,6 +56,10 @@ window.open("https://www.google.com");
  <br>
 <div id ="link1" onclick="linkwithURISelf()">
    Window.open with URI SELF</div>
+  <br>
+ <br>
+<div id ="link1" onclick="linkwithURISelfwithoutURI()">
+   Window.open with URI SELF Without URI</div>
 <br>
  <br>
     <div id="link2" onclick="linkwithoutURI()">
