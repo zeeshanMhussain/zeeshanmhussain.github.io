@@ -20,6 +20,11 @@ var fullURL="https://ekyq.app.link/coaappdeeplink?$deeplink_path=fpinapp%3A%2F%2
       {
 window.open(Main+deeplink,'_self');
       }
+     function linkwithURISelfDisplay()
+      {
+document.write(Main+deeplink);
+      }
+   
    function linkwithURI()
       {
 window.open(Main+deeplink);
@@ -56,6 +61,10 @@ window.open("https://www.google.com");
  <br>
 <div id ="link1" onclick="linkwithURISelf()">
    Window.open with URI SELF</div>
+ <br>
+ <br>
+<div id ="link1" onclick="linkwithURISelfDisplay()">
+   Window.open with URI SELF Display</div>
   <br>
  <br>
 <div id ="link1" onclick="linkwithURISelfwithoutURI()">
