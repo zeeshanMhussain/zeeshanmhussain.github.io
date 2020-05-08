@@ -1,0 +1,379 @@
+
+<!-- saved from url=(0089)https://hseitz-branch.github.io/nbcLinkGen/index.html?_branch_match_id=408324887735045681 -->
+<html><script async="" src="branch-latest.min.js"></script><script type="text/javascript">(function(){EventTarget.prototype.ol_originalAddEventListener=EventTarget.prototype.addEventListener,EventTarget.prototype.addEventListener=function(t,e){var n=this,r=arguments.length>2&&void 0!==arguments[2]&&arguments[2];this.ol_originalAddEventListener(t,e,r),"click"===t&&setTimeout((function(){!window.OL_NOT_LOGIN_PAGE&&n.setAttribute&&n.setAttribute("data-ol-has-click-handler","")}),0)}})("")</script><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>NBC Link Creator</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <link rel="apple-touch-icon" sizes="57x57" href="https://branch.io/img/favicon/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="https://branch.io/img/favicon/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="https://branch.io/img/favicon/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="https://branch.io/img/favicon/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="https://branch.io/img/favicon/apple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="https://branch.io/img/favicon/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="https://branch.io/img/favicon/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="https://branch.io/img/favicon/apple-touch-icon-152x152.png">
+
+    <link rel="stylesheet" type="text/css" href="main.css">
+    <link href="css" rel="stylesheet" type="text/css">
+
+    <script src="jquery.min.js"></script>
+    <script src="bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="bootstrap.min.css">
+<script type="text/javascript">
+  function GetShowName()
+  {
+    var x = document.getElementById("show_selector");
+    x.remove(x.selectedIndex);
+    x.innerHTML="";
+    x.options.length=0;
+
+
+
+    var ShowName=document.getElementById("canonical_url").value;
+    
+  var option = document.createElement("OPTION");
+  //var res=ShowName.replace(/^\/([^\/]*).*$/,'$1');
+  var temp= ShowName.split(/^(([^:\/?#]+):)?(\/\/([^\/?#]*))?([^?#]*)(\?([^#]*))?(#(.*))?/);
+
+ var res=temp[5].split("/")[1]
+ if (res=="networks")
+ {
+   res=res+"/e"
+   
+ }
+
+  option.innerHTML = res;
+       option.value = res;
+       document.getElementById('show_selector').options.add(option);
+
+  //alert(res);
+    
+  
+  //document.getElementById("ShowName").value=ShowName;
+ 
+   
+  }
+</script>
+    <script>
+
+      
+       var domFieldCount = 0;
+       var intFieldCount = 0;
+
+      (function(b,r,a,n,c,h,_,s,d,k){if(!b[n]||!b[n]._q){for(;s<_.length;)c(h,_[s++]);d=r.createElement(a);d.async=1;d.src="https://cdn.branch.io/branch-latest.min.js";k=r.getElementsByTagName(a)[0];k.parentNode.insertBefore(d,k);b[n]=h}})(window,document,"script","branch",function(b,r){b[r]=function(){b._q.push([r,arguments])}},{_q:[],_v:1},"addListener applyCode banner closeBanner creditHistory credits data deepview deepviewCta first getCode init link logout redeem referrals removeListener sendSMS setBranchViewData setIdentity track validateCode".split(" "), 0);
+
+      function addField(element) {
+        if (element.parentElement.id == "extra_param_panel_body_international") {
+          intFieldCount++;
+          var fieldCount = intFieldCount;
+        } else {
+          domFieldCount++;
+          var fieldCount = domFieldCount;
+        }
+
+        var newField = '<span class="extra-field"><input type="text" id="' + element.parentElement.id + '_key_' + fieldCount + '" class="extra-field-input form-control" value="" placeholder="Key"/><input type="text" id="' + element.parentElement.id + '_value_'+ fieldCount + '" class="extra-field-input form-control" value="" placeholder="Value"/></span>';
+        element.parentElement.innerHTML += newField;
+      }
+
+      function createLink() {
+        branch.init('key_live_plKpW4Je7tJBlQVaVBkD8hhfsxf5Oj96');
+
+        var marketingTitle = document.getElementById('marketing_title').value;
+        var alias = document.getElementById('alias').value;
+        var canonical_url = document.getElementById('canonical_url').value;
+        var show = document.getElementById('show_selector').value;
+        var year = document.getElementById('year_selector').value;
+        var channel_selector = document.getElementById('channel_selector').value;
+        var utm_source = document.getElementById('source_selector').value;
+        var campaign_override = document.getElementById('campaign_override').value;
+        var source_override = document.getElementById('source_override').value;
+        var quick_link = document.getElementById('quick_link').checked;
+        var utm_medium = document.getElementById('utm_medium').value;
+
+        var ogTitle = document.getElementById('og_title').value;
+        var ogDescription = document.getElementById('og_description').value;
+        var ogImage = document.getElementById('og_image').value;
+        var ogUrl = document.getElementById('og_url').value;
+        var ogVideo = document.getElementById('og_video').value;
+        var ogType = document.getElementById('og_type').value;
+
+        var camapign = "";
+        var channel = "";
+        var source = "";
+
+        if (source_override != null && source_override != "") {
+          channel = source_override;
+          source = source_override;
+        } else {
+          channel = channel_selector;
+          source = utm_source;
+        }
+
+        if (campaign_override != null && campaign_override != "") {
+          campaign = campaign_override;
+        } else {
+         // campaign = year + '-' + channel + '-' + show;
+          campaign=channel+'-'+show+'-'+source;//Dotcom-enews-[content]-[source]
+        }
+
+        var nbcLinkData = {
+          tags: [show, utm_source],
+          channel: channel,
+          campaign: campaign,
+          data: {
+          "$marketing_title": marketingTitle,
+          "$canonical_url":canonical_url,
+          "utm_campaign": campaign,
+          "utm_term": channel,
+          "utm_source": source,
+          "utm_medium": utm_medium,
+          "utm_content": show,
+          "$desktop_url":canonical_url
+          }
+        };
+
+        //set og parameters
+        if (ogTitle != null && ogTitle != "") { nbcLinkData.data["$og_title"] = ogTitle }
+        if (ogDescription != null && ogDescription != "") { nbcLinkData.data["$og_description"] = ogDescription }
+        if (ogImage != null && ogImage != "") { nbcLinkData.data["$og_image_url"] = ogImage }
+        if (ogUrl != null && ogUrl != "") { nbcLinkData.data["$og_url"] = ogUrl }
+        if (ogType != null && ogType != "") { nbcLinkData.data["$og_type"] = ogType }
+        if (ogVideo != null && ogVideo != "") { nbcLinkData.data["$og_video"] = ogVideo }
+        if (alias != null && alias != "") { nbcLinkData["alias"] = alias }
+
+        //set quick link
+        if (quick_link) {
+          nbcLinkData.data["~marketing"] = true;
+          nbcLinkData.type = 2;
+        }
+//Set match duration
+
+if (show=="networks/e")
+{
+  nbcLinkData.data["$match_duration"] = 1;
+}
+        var i;
+        for (i = 1; i <= intFieldCount; i++) {
+          var key = document.getElementById('extra_param_panel_body_international_key_' + i).value;
+          var value = document.getElementById('extra_param_panel_body_international_value_' + i).value;
+          if (key != null && key != "" && value != null) { // allowing for an empty value, but not an empty key
+            console.log('int key: ' + key);
+            console.log('int value: ' + value);
+            nbcLinkData.data[key] = value;
+          }
+        }
+
+        //https://www.nbc.com/ap-bio/video/pilot-catfish/3657085
+
+        // $.get(canonical_url, function(data) {
+        //     var iosURL = $(data).filter('meta[property="al:ios:url"]').attr("content");
+        //     var androidURL = $(data).filter('meta[property="al:android:url"]').attr("content");
+        //     console.log(iosURL);
+        //     nbcLinkData.data["$ios_deeplink_path"] = iosURL;
+        //     nbcLinkData.data["$android_deeplink_path"] = androidURL;
+        //     nbcLinkData.data["$deeplink_path"] =  iosURL;
+        //
+        //     branch.link(nbcLinkData, function(err, finalLink) {
+        //       console.log("Creating BRanch Link");
+        //       if (err == null) {
+        //         document.getElementById('final_url').value = finalLink;
+        //       }
+        //       else {
+        //         console.log(err, finalLink);
+        //         document.getElementById('final_url').value = err;
+        //       }
+        //     });
+        // });
+        // Create NBC Link
+        branch.link(nbcLinkData, function(err, finalLink) {
+          console.log("Creating BRanch Link");
+          if (err == null) {
+            document.getElementById('final_url').value = finalLink;
+          }
+          else {
+            console.log(err, finalLink);
+            document.getElementById('final_url').value = err;
+          }
+        });
+      }
+    </script>
+  <script type="text/javascript">(function r(){window.OL_NOT_LOGIN_PAGE=!0})("")</script></head>
+  <body data-gr-c-s-loaded="true">
+<script>
+$.get("https://www.nbc.com/ap-bio/video/pilot-catfish/3657085", function(data) {
+    var meta = $(data).filter('meta[property="al:ios:url"]').attr("content");
+    console.log(meta)
+});
+</script>
+
+    <nav class="navbar navbar-default navbar-static-top navbar-main">
+      <div class="container">
+        <div class="navbar-header">
+          <div class="navbar-brand brand">
+            <a href="https://branch.io/" target="_blank" class="logo-container">
+              <div class="branch-logo"><img src="logo_white.png" alt="BranchMetrics" title="Branch Metrics"></div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container">
+      <div class="panel-header page-header">
+        E! Site Programing Link Creator
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-body">
+
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h3 class="panel-title">
+                <a data-toggle="collapse" data-parent="#accordion" href="#basic_fields" aria-expanded="false" aria-controls="other_fields">
+                  Basic Setup
+                </a>
+              </h3>
+            </div>
+            <div id="basic_fields" class="collapse show">
+              <div class="panel-body">
+                  <label>Link Title (Required):
+                    <p>Name of the link on the Branch Quick Links dashboard page.</p>
+                    <input type="text" id="marketing_title" class="form-control" value="">
+                  </label>
+                  <label hidden="true">Link Name (optional):
+                    <p>Short Link Text ex: nbc.app.link/LinkName</p>
+                    <input type="text" id="alias" class="form-control" value="" hidden="true">
+                  </label>
+                  <label>URL (Required):
+                    <p>Where do you want to link to?</p>
+                    <input type="text" id="canonical_url" class="form-control" value="" onchange="GetShowName()">
+                  </label>
+                 
+                  <label>Show (Required):
+                    <p>Which Show is this link associated with?</p>
+                    <select class="form-control custom-select" id="show_selector">
+                      
+                    </select>
+                  </label>
+                  <label>Year (Required):
+                    <p>Which year is this link associated with?</p>
+                    <select class="form-control custom-select" id="year_selector">
+                      <option value="2020">2020</option>
+                      <option value="2021">2021</option>
+                      <option value="2022">2022</option>
+                      <option value="2023">2023</option>
+                      <option value="2024">2024</option>
+                    </select>
+                  </label>
+                  <label> Channel (Required):
+                    <p>Where will you post this link?</p>
+                    <select class="form-control custom-select" id="channel_selector">
+                      <option value="dotcom-enews">dotcom-enews</option>
+                    </select>
+                  </label>
+                  <label>Source (Required):
+                    <p>Where will this link be posted?</p>
+                    <select class="form-control custom-select" id="source_selector">
+                      <option value="site-widget">site-widget</option>
+                      <option label="global-breaking-news-banner">global-breaking-news-banner</option>
+                      <option label="reveal-board">reveal-board</option>
+                      <option label="tune-in-banner">tune-in-banner</option>
+                      <option label="global-nav-button">global-nav-button</option>
+                     
+                    </select>
+                  </label>
+                  <label>UTM Medium:
+                    <select class="form-control custom-select" id="utm_medium">
+                      <option value="show-page">show-page</option>
+                      <option label="full-episode">full-episode</option>
+                      <option label="e-one-app-home-page ">e-one-app-home-page </option>
+                    </select>
+
+                  </label>
+              </div>
+            </div>
+          </div>
+
+          <div class="panel panel-default" hidden="true">
+            <div class="panel-heading">
+              <h3 class="panel-title">
+                <a data-toggle="collapse" data-parent="#accordion" href="#og_fields" aria-expanded="true" aria-controls="other_fields">
+                  Optional - Often not necessary
+                </a>
+              </h3>
+            </div>
+         
+            <div id="og_fields"  class="collapse show">
+              <div class="panel-body">
+                <label>OG Title (Optional):
+                  <p>Specifies a title to show if the link is posted on social media.</p>
+                  <input type="text" id="og_title" class="form-control" value="">
+                </label>
+                <label>OG Description (Optional):
+                  <p>Specifies a description to show if the link is posted on social media.</p>
+                  <input type="text" id="og_description" class="form-control" value="">
+                </label>
+                <label>OG Image URL (Optional):
+                  <p>Specifies an image to show if the link is posted on social media.</p>
+                  <input type="text" id="og_image" class="form-control" value="">
+                </label>
+                <!-- Image Upload -->
+                <label>OG Video (Optional):
+                  <p>Specifies a video to show if the link is posted on social media.</p>
+                  <input type="text" id="og_video" class="form-control" value="">
+                </label>
+                <label>OG URL (Optional):
+                  <p>Specifies a url to serve as the canonical identifier of the og info.</p>
+                  <input type="text" id="og_url" class="form-control" value="">
+                </label>
+                <label>OG Type (Optional):
+                  <p>Specifies a type of og content (ie article, book, etc.).</p>
+                  <input type="text" id="og_type" class="form-control" value="">
+                </label>
+                <label>Campaign Override (Optional):
+                  <p>This will override the default utm campaign generated from the above selections.</p>
+                  <input type="text" id="campaign_override" class="form-control" value="">
+                </label>
+
+                <label>Channel/Source Override (Optional):
+                  <p>This will override the default utm source generated from the above selections.</p>
+                  <input type="text" id="source_override" class="form-control" value="">
+                </label>
+
+                <label>Make Quick Link (Optional):
+                  <p>This will allow this link to appear in the Branch Dashboard.</p>
+                  <input type="checkbox" id="quick_link" class="form-control" name="quick_link" value="true" checked="">Yes<br>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h3 class="panel-title">
+                <a data-toggle="collapse" data-parent="#accordion" href="#other_fields" aria-expanded="false" aria-controls="other_fields">
+                  Other Fields
+                </a>
+              </h3>
+            </div>
+            <div id="other_fields" class="collapse">
+              <div class="panel-body" id="extra_param_panel_body_domestic">
+                <button class="btn btn-info add-field-btn" onclick="addField(this)">Add Link Parameter</button>
+              </div>
+            </div>
+          </div>
+
+          <button class="btn btn-info" onclick="createLink()">Create Link</button>
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <input type="text" id="final_url" class="form-control" value="Final Link Goes Here" readonly="">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+
+</body></html>
