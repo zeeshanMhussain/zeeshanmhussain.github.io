@@ -14,15 +14,11 @@
 
             }
 
-            if (window.adobePrivacy && window.adobePrivacy.hasUserProvidedConsent()) {
+            
 
                 initBranch();
 
-            } else {
-
-                window.addEventListener("adobePrivacy:PrivacyConsent", initBranch);
-
-            }
+           
 
         })();
 
