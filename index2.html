@@ -23,12 +23,12 @@
         })();
 
     </script>
-   <script>
-var dt = new Date();
-document.getElementById("datetime").innerHTML = dt.toLocaleString();
-</script>
+
   </head>
 <body>
-<p>Date/Time: <span id="datetime"></span></p>
+<p id="date"></p>
+<script>
+document.getElementById("date").innerHTML = Date();
+</script>
 </body>
 </html>
