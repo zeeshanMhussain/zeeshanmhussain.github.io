@@ -286,7 +286,7 @@ $.get("https://www.nbc.com/ap-bio/video/pilot-catfish/3657085", function(data) {
                     <input type="text" id="canonical_url" class="form-control" value="" onchange="GetShowName()">
                   </label>
                  
-                  <label>*Show:
+                  <label>*Show (UTM Content):
                     <p>Which Show is this link associated with?</p>
                     <select class="form-control custom-select" id="show_selector" onchange="GetShowName()">
                       
@@ -297,6 +297,8 @@ $.get("https://www.nbc.com/ap-bio/video/pilot-catfish/3657085", function(data) {
                     <p>Where will you post this link?</p>
                     <select class="form-control custom-select" id="channel_selector" onchange="GetShowName()">
                       <option value="dotcom-enews">dotcom-enews</option>
+                        <option value="dot-com-enews-x">dot-com-enews-x</option>
+                      
                     </select>
                   </label>
                   <label>*UTM Source:
@@ -307,14 +309,29 @@ $.get("https://www.nbc.com/ap-bio/video/pilot-catfish/3657085", function(data) {
                       <option label="reveal-board">reveal-board</option>
                       <option label="tune-in-banner">tune-in-banner</option>
                       <option label="global-nav-button">global-nav-button</option>
-                     
+                     <option label="Site-widget-home">Site-widget-home</option>
+                        <option label="Show-watch-button">Show-watch-button</option>
+                        <option label="Change site-widget to site-widget-landing">Change site-widget to site-widget-landing</option>
+                        <option label="Show-landing-watch-button">Show-landing-watch-button</option>
+                        <option label="Site-navigation">Site-navigation</option>
+                        
                     </select>
+                      
+                      
+
+
+
+
+
+
+
+
                   </label>
                   <label>*UTM Medium:
                     <select class="form-control custom-select" id="utm_medium" onchange="GetShowName()">
                       <option value="show-page">show-page</option>
                       <option label="full-episode">full-episode</option>
-                      <option label="e-one-app-home-page ">e-one-app-home-page </option>
+                      <option label="movie-page">movie-page</option>
                     </select>
 
                   </label>
