@@ -85,9 +85,9 @@
         }
         var d = new Date();
   var n = d.getFullYear();
-        campaign=n+'-'+channel+'-'+show+'-'+source;//Dotcom-enews-[content]-[source]
-        document.getElementById('marketing_title').value=campaign+'-'+utm_medium;
-
+        campaign=n+'-'+channel+'-'+show+'-'+source+'-'+utm_medium;//Dotcom-enews-[content]-[source]
+        document.getElementById('marketing_title').value=campaign;
+        document.getElementById('campaign_override').value=campaign;
   }
 </script>
     <script>
@@ -317,6 +317,10 @@ $.get("https://www.nbc.com/ap-bio/video/pilot-catfish/3657085", function(data) {
                     <p>Name of the link on the Branch Quick Links dashboard page.</p>
                     <input type="text" id="marketing_title" class="form-control" value="">
                   </label>
+                  <label>Campaign Override (Optional):
+                    <p>This will override the default utm campaign generated from the above selections.</p>
+                    <input type="text" id="campaign_override" class="form-control" value="">
+                  </label>
               </div>
             </div>
           </div>
@@ -357,10 +361,7 @@ $.get("https://www.nbc.com/ap-bio/video/pilot-catfish/3657085", function(data) {
                   <p>Specifies a type of og content (ie article, book, etc.).</p>
                   <input type="text" id="og_type" class="form-control" value="">
                 </label>
-                <label>Campaign Override (Optional):
-                  <p>This will override the default utm campaign generated from the above selections.</p>
-                  <input type="text" id="campaign_override" class="form-control" value="">
-                </label>
+               
 
                 <label>Channel/Source Override (Optional):
                   <p>This will override the default utm source generated from the above selections.</p>
