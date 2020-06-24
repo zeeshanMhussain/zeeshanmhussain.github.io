@@ -26,8 +26,9 @@
     // init Branch
   
     branch.init('key_live_naGfWYMa9wGoGPBv07xFyfdavCfkMIJI', function(err, data) {
-    console.log(err, data);
+     console.log('DATA',data);
      });
+  
   var linkData = {
   campaign: 'TestZeeshan',
   channel: 'WebOnly',
@@ -39,6 +40,7 @@
     '$web_only': true
   }
 };
+console.log(b);
   branch.setBranchViewData(linkData);
  /* branch.setBranchViewData({
   tags: ['tag1', 'tag2'],
@@ -50,7 +52,10 @@
 });*/
   
   branch.link(linkData, function(err, link) {
-  console.log(link);
+  //console.log(link);
+
+  //console.log(linkData);
+  
 });
   </script>
   
