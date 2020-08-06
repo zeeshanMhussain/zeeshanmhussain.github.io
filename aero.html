@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="deepview-service" content="deepview-service">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="googlebot" content="noindex">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="og:image" content="{{#if link_data.$og_image}}{{link_data.$og_image}}{{else}}{{app.og_image}}{{/if}}">
+    <meta name="og:title" content="{{#if link_data.$og_title}}{{link_data.$og_title}}{{else}}{{app.of_title}}{{/if}}">    <link rel="icon" href="https://ar.adobe.com/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="https://ar.adobe.com/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://ar.adobe.com/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://ar.adobe.com/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="https://ar.adobe.com/android-chrome-192x192.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://ar.adobe.com/favicon-16x16.png">
+    <link rel="mask-icon" href="https://ar.adobe.com/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="msapplication-TileImage" content="https://ar.adobe.com/mstile-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:00,300" rel="stylesheet" type="text/css">
+    <style>
+      body,html{height:100%;width:100%;margin:0;padding:0;font-family:open sans}body{color:#fff;background-image:url(https://d9hhrg4mnvzow.cloudfront.net/projectaero.adobelanding.com/aero-ugc-landing-template/fbf5b91e-landingbg-2_10ug0h4000000000000028.png);background-repeat:no-repeat;background-position:center center;background-size:cover}header.banner{margin:0;padding-top:15px;padding-bottom:10px;background:#fff;width:100%;text-align:center}header.banner svg{height:20px;width:auto}header.aero{display:flex;flex-direction:row;justify-content:flex-start;align-items:center;padding:15px}header.aero svg{width:50px;height:50px}h3.brand{text-transform:uppercase;margin-left:10px;font-size:14px}h1{font-size:24px;max-width:80%;margin-left:10%;margin-bottom:0}h1.title{margin-top:0}section.container{margin:0;padding:0;height:100%}section.content{margin-top:40px;text-align:center}footer{position:fixed;bottom:0;left:0;right:0;padding:24px 10px;text-align:center;background:#79bef91f}footer a{color:#fff;text-decoration:none}footer a::hover{color:#fff;text-decoration:none}div.extra_actions{display:flex;flex-direction:row;justify-content:center;align-items:center;margin-bottom:20px}div.extra_actions div{display:inline-block}div.privacy,div.report{width:45%}div.report{text-align:right}div.privacy{text-align:left}div.report svg{height:18px;margin-bottom:-3px}div.report svg path{fill:#fff}div.extra_actions .white_line{border-left:2px solid #fff;margin:0 15px;padding:0;height:20px}button.app_button{background:0 0;border-radius:25px;padding:10px 20px;border:1px solid #fff;color:#fff;font-size:18px}img.preview{border-radius:8px;height:100px;width:auto}div.cta{margin-top:50px}@media only screen and (orientation:landscape) and (max-device-height:767px){div.cta{margin-top:0;max-width:20%;margin-right:14px}div.textbox{max-width:50%}button.app_button{font-size:15px}h1,img.preview{display:inline-block}img.preview{max-width:20%;height:auto;margin-left:18px}footer,section.content{display:flex;flex-direction:row;align-items:center}section.content{margin-top:0;justify-content:space-around}h1{margin:0 18px;font-size:18px}footer{justify-content:space-between;font-size:12px;padding:18px}div.privacy,div.report{width:auto}div.extra_actions{margin:0}}
+      @media screen /* >= iPhone 5 */
+      and (max-device-width: 321px) {
+        h1 {
+          font-size: 18px;
+        }
+        img.preview {
+          border-radius: 6px;
+          height: 75px;
+        }
+        footer { 
+          padding: 10px 5px;
+          font-size: 15px;
+        }
+
+        div.extra_actions {
+          margin-bottom: 10px;
+        }
+        div.copyright {
+          font-size: 10px;
+        }
+
+      }
+      @media only screen /* >= iPhone 6 */
+      and (max-device-width: 375px)
+      and (orientation: portrait) {
+      }
+      @media only screen /* >= iPhone 6+ */
+      and (max-device-width: 414px)
+      and (orientation: portrait) {
+      }
+      /* ============ Landscape ============ */
+      @media only screen and (orientation: landscape){
+      }
+      @media only screen /* >= iPhone 6 */
+      and (min-device-width: 645px)
+      and (orientation: landscape) {
+      }
+    </style>
+    <title>{{#if link_data.$og_title}}{{link_data.og_title}}{{else}}{{app.og_title}}{{/if}}</title>
+  </head>
+  <body>
+    <section class="container">
+      <header class="banner"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="17" viewBox="0 0 24 20" focusable="false"><path fill="#FF0000" d="M15.1,0H24v20L15.1,0z M8.9,0H0v20L8.9,0z M12,7.4L17.6,20h-3.8l-1.6-4H8.1L12,7.4z"></path></svg></header>
+      <header class="aero">
+        <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+   viewBox="0 0 240 234" style="enable-background:new 0 0 240 234;" xml:space="preserve">
+          <style type="text/css">
+            .st0{fill:#013301;}
+            .st1{fill:#33FF66;}
+          </style>
+          <path class="st0" d="M43,0h155c23.5,0,42.5,19,42.5,42.5v149c0,23.5-19,42.5-42.5,42.5H43c-23.5,0-42.5-19-42.5-42.5v-149
+            C0.5,19,19.5,0,43,0z"/>
+          <path class="st1" d="M108.5,140H71.3l-7.6,23.6c-0.2,0.9-1,1.5-1.9,1.4H43c-1.1,0-1.4-0.6-1.1-1.8l32.2-92.4c0.3-1,0.6-1.9,1-3.1
+            c0.4-2.1,0.6-4.3,0.6-6.5c-0.1-0.5,0.3-1,0.8-1.1c0.1,0,0.2,0,0.3,0h25.6c0.8,0,1.2,0.3,1.3,0.8l36.5,102.5c0.3,1.1,0,1.6-1,1.6
+            h-20.9c-0.7,0.1-1.4-0.4-1.6-1.1L108.5,140z M77.1,120.1h25.4c-0.6-2.1-1.4-4.6-2.3-7.2c-0.9-2.7-1.8-5.6-2.7-8.6
+            c-1-3.1-1.9-6.1-2.9-9.2c-1-3.1-1.9-6-2.7-8.9c-0.8-2.8-1.5-5.4-2.2-7.8h-0.2c-0.9,4.3-2,8.6-3.4,12.9c-1.5,4.8-3,9.8-4.6,14.8
+            C80.1,111.2,78.6,115.9,77.1,120.1L77.1,120.1z"/>
+          <path class="st1" d="M150.9,85h17.5c1,0,1.8,0.7,2.1,1.6c0.4,0.8,0.6,1.7,0.8,2.6c0.2,1,0.4,2.1,0.5,3.1c0.1,1.1,0.2,2.3,0.2,3.6
+            c3-3.5,6.6-6.4,10.7-8.6c4.4-2.5,9.3-3.7,14.3-3.6c0.7-0.1,1.3,0.4,1.4,1.1c0,0.1,0,0.2,0,0.4v19.5c0,0.8-0.5,1.1-1.6,1.1
+            c-3.3-0.2-6.7,0-10,0.7c-2.9,0.6-5.7,1.5-8.4,2.7c-2.3,1.1-4.8,2.3-6,3.7v50.7c0,1-0.4,1.4-1.3,1.4h-18.8c-0.8,0.1-1.5-0.4-1.6-1.2
+            c0-0.1,0-0.3,0-0.4v-55c0-2.4,0-4.9-0.1-7.5c-0.1-2.6-0.1-5.2-0.2-7.8c-0.1-2.3-0.3-4.7-0.6-7c-0.1-0.5,0.2-1,0.7-1.1
+            C150.5,85,150.7,85,150.9,85z"/>
+        </svg>
+        <h3 class="brand" data-translation="aero_landing_page_app_name_full">Adobe Aero<h3>
+      </header>
+      <section class="content">
+        <img class="preview" src="{{#if link_data.$og_image_url}}{{link_data.$og_image_url}}{{else}}{{app.og_image_url}}{{/if}}" />
+        <div class="textbox">
+        {{#if link_data.$og_title}}
+        <h1 data-translation="aero_landing_page_no_app_action">Download Adobe Aero to view</h1>
+
+        <h1 class="title" data-translation="aero_landing_page_experience_title" data-title="{{link_data.$og_title}}">&ldquo;{{link_data.$og_title}}&rdquo;</h1>
+
+        {{else}}
+        <h1>Download Adobe Aero</h1>
+        {{/if}}
+        </div>
+        <p>{{#if link_data.$og_image}}{{link_data.$og_image}}{{else}}{{app.og_image}}{{/if}}</p>
+        <div class="cta">
+        {{#if has_app}}
+        <a id="action" href="{{action}}"><button class="app_button" data-translation="aero_landing_page_app_installed_action">View in Adobe Aero</button></a>
+        {{else}}
+        <a id="action" href="{{action}}"><button class="app_button">Download Aero</button></a>
+        {{/if}}
+        </div>
+      </section>
+    </section>
+    <footer>
+      <div class="extra_actions"><div class="report">
+        <a href="REPORT">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12 1l-12 22h24l-12-22zm-1 8h2v7h-2v-7zm1 11.25c-.69 0-1.25-.56-1.25-1.25s.56-1.25 1.25-1.25 1.25.56 1.25 1.25-.56 1.25-1.25 1.25z"/></svg>&nbsp;
+          <span data-translate="aero_landing_page_report_content">Report content</span>
+        </a>
+        </div><div class="white_line"></div><div class="privacy"><a href="PRIVACY" data-translation="aero_landing_page_privacy_link_text">Privacy Policy</a></div></div>
+      <div class="copyright" data-translation="aero_landing_page_copyright_notice">Copyright &copy; 2020 Adobe. All rights reserved.</div>
+    </footer>
+  </body>
+</html>

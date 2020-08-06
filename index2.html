@@ -89,7 +89,7 @@ var content_items = [
 var customer_event_alias = "event alias";
 
 branch.logEvent(
-   "START_TRIAL",
+   "Ka thermo atc",
    event_and_custom_data,
    content_items,
    customer_event_alias,
@@ -104,5 +104,21 @@ branch.logEvent(
 document.getElementById("date").innerHTML = Date();
 </script>
 <a href='https://photoshopexpress.app.link/lhNkrs96n4'>Test</a>
+<div>
+   <select name="Apps" id="apps">
+      <option value="https://zeeshan.app.link/5uoP0EQ8H8">Monster Factory</option>
+      <option value="https://zeeshan.app.link/WlMAw2oWH8">test</option>
+   
+    </select>
+    <button onclick="SendMeTheApp()">Next</button>
+</div>
+<script>
+   function SendMeTheApp() {
+      var e = document.getElementById("apps");
+      var link= e.options[e.selectedIndex].value;
+     
+      window.open(link, "_self");
+   }
+   </script>
 </body>
 </html>
