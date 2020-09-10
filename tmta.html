@@ -1,0 +1,74 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8">
+    <script type="text/javascript">
+        (function(b,r,a,n,c,h,_,s,d,k){if(!b[n]||!b[n]._q){for(;s<_.length;)c(h,_[s++]);d=r.createElement(a);d.async=1;d.src="https://cdn.branch.io/branch-latest.min.js";k=r.getElementsByTagName(a)[0];k.parentNode.insertBefore(d,k);b[n]=h}})(window,document,"script","branch",function(b,r){b[r]=function(){b._q.push([r,arguments])}},{_q:[],_v:1},"addListener applyCode banner closeBanner creditHistory credits data deepview deepviewCta first getCode init link logout redeem referrals removeListener sendSMS setBranchViewData setIdentity track validateCode".split(" "), 0);
+        branch.init('key_live_fnOUoCncIhW9gknPehW2Rjcprul6XpSa');
+            function sendSMS(form) {
+
+                console.log('inside sendSMS');
+               
+
+
+             
+
+                
+             var phone = form.phone.value;
+                var linkData = {
+                    tags: [],
+                    channel: 'Website',
+                    feature: 'TextMeTheApp',
+                    data: {
+                        'foo': 'bar'
+                    }
+                };
+                var options = {};
+                var callback = function(err, result) {
+                    console.log("ERROR:")
+                    console.log(err);
+                    console.log("RESULT:")
+                    console.log(result);
+                    if (err) {
+                        console.log("Sorry, something went wrong.");
+                        
+                    }
+                    else {
+                        console.log("SMS sent!");
+                    }
+                };
+                branch.sendSMS(phone, linkData, options, callback);
+                form.phone.value = "";
+                
+                
+            }
+
+            function SendMeTheApp(){
+                var event_and_custom_data = {
+   "transaction_id": "tras_Id_1234",
+   "description": "Preferred purchase",
+   "registration_id": "12345"
+};
+
+var customer_event_alias = "my custom alias";
+
+branch.logEvent(
+   "START_TRIAL",
+   event_and_custom_data,
+   
+   customer_event_alias,
+   function(err) { console.log(err); }
+);
+            }
+    </script>
+</head>
+<body>
+        Send SMS
+        <form onsubmit="sendSMS(this); return false;">
+            <input id="phone" name="phone" type="tel" placeholder="(650) 918-9419" />
+            <br/>
+            <input type="submit"/>
+        </form>
+        <button onclick="SendMeTheApp()">Test</button>
+    </body>
+</html>
