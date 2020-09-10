@@ -27,6 +27,11 @@
   
     branch.init('key_live_fnOUoCncIhW9gknPehW2Rjcprul6XpSa', function(err, data) {
     console.log(err, data);
+   
+      
+      console.log("referring_link:");
+      document.write(data.data_parsed["~referring_link"]);
+      console.dir(data);
      });
   
   </script>
