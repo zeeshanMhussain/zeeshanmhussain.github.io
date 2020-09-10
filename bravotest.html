@@ -27,10 +27,13 @@
 
     branch.init('key_live_mofJnVNrG5BnZd6bjompgipgxCl6aZuh', function(err, data) {
       document.write("Referring Link");
+      
       document.write(data.data_parsed["~referring_link"]);
       document.write("<br>");
       
       var x, y,txt = "";
+      console.log("~referring_link:");
+      document.write(data.data_parsed["~referring_link"]);
       console.dir(data);
 /*var myArray=Object.values(data);
 
