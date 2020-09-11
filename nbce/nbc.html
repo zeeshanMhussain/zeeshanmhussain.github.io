@@ -1,0 +1,405 @@
+
+<!-- saved from url=(0089)https://hseitz-branch.github.io/nbcLinkGen/index.html?_branch_match_id=408324887735045681 -->
+<html>
+  
+   <head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>NBC Link Creator</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <link rel="apple-touch-icon" sizes="57x57" href="https://branch.io/img/favicon/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="https://branch.io/img/favicon/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="https://branch.io/img/favicon/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="https://branch.io/img/favicon/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="https://branch.io/img/favicon/apple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="https://branch.io/img/favicon/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="https://branch.io/img/favicon/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="https://branch.io/img/favicon/apple-touch-icon-152x152.png">
+
+    <link rel="stylesheet" type="text/css" href="main.css">
+    <link href="css" rel="stylesheet" type="text/css">
+
+   <!--  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+  -->
+<script src="jquery.min.js"></script>
+<script src="bootstrap.min.js"></script>
+<link rel="stylesheet" href="bootstrap.min.css">
+
+    <script>
+       var domFieldCount = 0;
+       var intFieldCount = 0;
+
+      (function(b,r,a,n,c,h,_,s,d,k){if(!b[n]||!b[n]._q){for(;s<_.length;)c(h,_[s++]);d=r.createElement(a);d.async=1;d.src="https://cdn.branch.io/branch-latest.min.js";k=r.getElementsByTagName(a)[0];k.parentNode.insertBefore(d,k);b[n]=h}})(window,document,"script","branch",function(b,r){b[r]=function(){b._q.push([r,arguments])}},{_q:[],_v:1},"addListener applyCode banner closeBanner creditHistory credits data deepview deepviewCta first getCode init link logout redeem referrals removeListener sendSMS setBranchViewData setIdentity track validateCode".split(" "), 0);
+
+      function addField(element) {
+        if (element.parentElement.id == "extra_param_panel_body_international") {
+          intFieldCount++;
+          var fieldCount = intFieldCount;
+        } else {
+          domFieldCount++;
+          var fieldCount = domFieldCount;
+        }
+
+        var newField = '<span class="extra-field"><input type="text" id="' + element.parentElement.id + '_key_' + fieldCount + '" class="extra-field-input form-control" value="" placeholder="Key"/><input type="text" id="' + element.parentElement.id + '_value_'+ fieldCount + '" class="extra-field-input form-control" value="" placeholder="Value"/></span>';
+        element.parentElement.innerHTML += newField;
+      }
+
+      function createLink() {
+        branch.init('key_live_clvNTn0ILAmUSJwrqVDu3gebCriiIeNe');
+
+        var marketingTitle = document.getElementById('marketing_title').value;
+        var alias = document.getElementById('alias').value;
+        var canonical_url = document.getElementById('canonical_url').value;
+        var show = document.getElementById('show_selector').value;
+        var year = document.getElementById('year_selector').value;
+        var channel_selector = document.getElementById('channel_selector').value;
+        var utm_source = document.getElementById('source_selector').value;
+        var campaign_override = document.getElementById('campaign_override').value;
+        var source_override = document.getElementById('source_override').value;
+        var quick_link = document.getElementById('quick_link').checked;
+        var utm_medium = document.getElementById('utm_medium').value;
+
+        var ogTitle = document.getElementById('og_title').value;
+        var ogDescription = document.getElementById('og_description').value;
+        var ogImage = document.getElementById('og_image').value;
+        var ogUrl = document.getElementById('og_url').value;
+        var ogVideo = document.getElementById('og_video').value;
+        var ogType = document.getElementById('og_type').value;
+
+        var camapign = "";
+        var channel = "";
+        var source = "";
+
+        if (source_override != null && source_override != "") {
+          channel = source_override;
+          source = source_override;
+        } else {
+          channel = channel_selector;
+          source = utm_source;
+        }
+
+        if (campaign_override != null && campaign_override != "") {
+          campaign = campaign_override;
+        } else {
+          campaign = year + '-' + channel + '-' + show;
+        }
+
+        var nbcLinkData = {
+          tags: [show, utm_source],
+          channel: channel,
+          campaign: campaign,
+          data: {
+          "$marketing_title": marketingTitle,
+          "$canonical_url":canonical_url,
+          "utm_campaign": campaign,
+          "utm_term": channel,
+          "utm_source": source,
+          "utm_medium": utm_medium,
+          "utm_content": show,
+          "$desktop_url":canonical_url
+          }
+        };
+
+        //set og parameters
+        if (ogTitle != null && ogTitle != "") { nbcLinkData.data["$og_title"] = ogTitle }
+        if (ogDescription != null && ogDescription != "") { nbcLinkData.data["$og_description"] = ogDescription }
+        if (ogImage != null && ogImage != "") { nbcLinkData.data["$og_image_url"] = ogImage }
+        if (ogUrl != null && ogUrl != "") { nbcLinkData.data["$og_url"] = ogUrl }
+        if (ogType != null && ogType != "") { nbcLinkData.data["$og_type"] = ogType }
+        if (ogVideo != null && ogVideo != "") { nbcLinkData.data["$og_video"] = ogVideo }
+        if (alias != null && alias != "") { nbcLinkData["alias"] = alias }
+
+        //set quick link
+        if (quick_link) {
+          nbcLinkData.data["~marketing"] = true;
+          nbcLinkData.type = 2;
+        }
+
+        var i;
+        for (i = 1; i <= intFieldCount; i++) {
+          var key = document.getElementById('extra_param_panel_body_international_key_' + i).value;
+          var value = document.getElementById('extra_param_panel_body_international_value_' + i).value;
+          if (key != null && key != "" && value != null) { // allowing for an empty value, but not an empty key
+            console.log('int key: ' + key);
+            console.log('int value: ' + value);
+            nbcLinkData.data[key] = value;
+          }
+        }
+
+        //https://www.nbc.com/ap-bio/video/pilot-catfish/3657085
+
+        // $.get(canonical_url, function(data) {
+        //     var iosURL = $(data).filter('meta[property="al:ios:url"]').attr("content");
+        //     var androidURL = $(data).filter('meta[property="al:android:url"]').attr("content");
+        //     console.log(iosURL);
+        //     nbcLinkData.data["$ios_deeplink_path"] = iosURL;
+        //     nbcLinkData.data["$android_deeplink_path"] = androidURL;
+        //     nbcLinkData.data["$deeplink_path"] =  iosURL;
+        //
+        //     branch.link(nbcLinkData, function(err, finalLink) {
+        //       console.log("Creating BRanch Link");
+        //       if (err == null) {
+        //         document.getElementById('final_url').value = finalLink;
+        //       }
+        //       else {
+        //         console.log(err, finalLink);
+        //         document.getElementById('final_url').value = err;
+        //       }
+        //     });
+        // });
+        // Create NBC Link
+        branch.link(nbcLinkData, function(err, finalLink) {
+          console.log("Creating BRanch Link");
+          if (err == null) {
+            document.getElementById('final_url').value = finalLink;
+          }
+          else {
+            console.log(err, finalLink);
+            document.getElementById('final_url').value = err;
+          }
+        });
+      }
+    </script>
+  <script src="chrome-extension://mooikfkahbdckldjjndioackbalphokd/assets/prompt.js"></script></head>
+  <body>
+<script>
+$.get("https://www.nbc.com/ap-bio/video/pilot-catfish/3657085", function(data) {
+    var meta = $(data).filter('meta[property="al:ios:url"]').attr("content");
+    console.log(meta)
+});
+</script>
+
+    <nav class="navbar navbar-default navbar-static-top navbar-main">
+      <div class="container">
+        <div class="navbar-header">
+          <div class="navbar-brand brand">
+            <a href="https://branch.io/" target="_blank" class="logo-container">
+              <div class="branch-logo"><img src="logo_white.png" alt="BranchMetrics" title="Branch Metrics"></div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container">
+      <div class="panel-header page-header">
+        NBC Link Creator
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-body">
+
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h3 class="panel-title">
+                <a data-toggle="collapse" data-parent="#accordion" href="https://hseitz-branch.github.io/nbcLinkGen/index.html?_branch_match_id=408324887735045681#basic_fields" aria-expanded="false" aria-controls="other_fields">
+                  Basic Setup
+                </a>
+              </h3>
+            </div>
+            <div id="basic_fields" class="collapse show">
+              <div class="panel-body">
+                  <label>Link Title (Required):
+                    <p>Name of the link on the Branch Quick Links dashboard page.</p>
+                    <input type="text" id="marketing_title" class="form-control" value="">
+                  </label>
+                  <label>Link Name (optional):
+                    <p>Short Link Text ex: nbc.app.link/LinkName</p>
+                    <input type="text" id="alias" class="form-control" value="">
+                  </label>
+                  <label>URL (Required):
+                    <p>Where do you want to link to?</p>
+                    <input type="text" id="canonical_url" class="form-control" value="">
+                  </label>
+                  <label>Show (Required):
+                    <p>Which Show is this link associated with?</p>
+                    <select class="form-control custom-select" id="show_selector">
+                      <option value="ap-bio">A.P. Bio</option>
+                      <option value="abbys">Abbys</option>
+                      <option value="access">Access</option>
+                      <option value="americas-got-talent">America's Got Talent</option>
+                      <option value="american-ninja-warrior">American Ninja Warrior</option>
+                      <option value="better-late-than-never">Better Late Than Never</option>
+                      <option value="billboard-music-awards">Billboard Music Awards</option>
+                      <option value="the-blacklist">The Blacklist</option>
+                      <option value="blindspot">Blindspot</option>
+                      <option value="bluff-city-law">Bluff City Law</option>
+                      <option value="bring-the-funny">Bring The Funny</option>
+                      <option value="brooklyn-nine-nine">Brooklyn Nine Nine</option>
+                      <option value="the-champion-within">The Champion Within</option>
+                      <option value="chicago-fire">Chicago Fire</option>
+                      <option value="chicago-med">Chicago Med</option>
+                      <option value="chicago-pd">Chicago PD</option>
+                      <option value="consumer-101">Consumer 101</option>
+                      <option value="council-of-dads">Council of Dads</option>
+                      <option value="dateline">Dateline</option>
+                      <option value="days-of-our-lives">Days of Our Lives</option>
+                      <option value="ellens-game-of-games">Ellens Game of Games</option>
+                      <option value="elvis-all-star-tribute">Elvis All Star Tribute</option>
+                      <option value="the-enemy-within">The Enemy Within</option>
+                      <option value="genius-junior">Genius Junior</option>
+                      <option value="the-golden-globe-awards">The Golden Globe Awards</option>
+                      <option value="good-girls">Good Girls</option>
+                      <option value="the-good-place">The Good Place</option>
+                      <option value="hollywood-game-night">Hollywood Game Night</option>
+                      <option value="i-feel-bad">I Feel Bad</option>
+                      <option value="indebted">Indebted</option>
+                      <option value="the-inbetween">The Inbetween</option>
+                      <option value="jay-lenos-garage">Jay Lenos Garage</option>
+                      <option value="jesus-christ-superstar">Jesus Christ Superstar</option>
+                      <option value="last-call-with-carson-daly">Last Call With Carson Daly</option>
+                      <option value="late-night-with-seth-meyers">Late Night With Seth Meyers</option>
+                      <option value="law-and-order-special-victims-unit">Law and Order SVU</option>
+                      <option value="lincoln-rhyme-hunt-for-the-bone-collector">Lincoln Rhyme: Hunt For The Bone Collector</option>
+                      <option value="little-big-shots">Little Big Shots</option>
+                      <option value="making-it">Making It</option>
+                      <option value="manifest">Manifest</option>
+                      <option value="marlon">Marlon</option>
+                      <option value="meet-the-press">Meet the Press</option>
+                      <option value="midnight-texas">Midnight Texas</option>
+                      <option value="naturally-danny-seo">Naturally Danny SEO</option>
+                      <option value="nbc">NBC</option>
+                      <option value="nbc-news-specials">NBC News Specials</option>
+                      <option value="nbc-nightly-news">NBC Nightly News</option>
+                      <option value="new-amsterdam">New Amsterdam</option>
+                      <option value="nightly-news-films">Nightly News Films</option>
+                      <option value="perfect-harmony">Perfect Harmony</option>
+                      <option value="saturday-night-live">Saturday Night Live</option>
+                      <option value="shades-of-blue">Shades of Blue</option>
+                      <option value="shrink">Shrink</option>
+                      <option value="songland">Songland</option>
+                      <option value="sunnyside">Sunnyside</option>
+                      <option value="superstore">Superstore</option>
+                      <option value="the-titan-games">The Titan Games</option>
+                      <option value="this-is-us">This Is Us</option>
+                      <option value="timeless">Timeless</option>
+                      <option value="today">Today</option>
+                      <option value="the-tonight-show">The Tonight show</option>
+                      <option value="vets-saving-pets">Vets Saving Pets</option>
+                      <option value="the-voice">The Voice</option>
+                      <option value="the-voyager-with-josh-garcia">The Voyager With Josh Garcia</option>
+                      <option value="the-village">the Village</option>
+                      <option value="the-wall">The Wall</option>
+                      <option value="will-and-grace">Will and Grace</option>
+                      <option value="world-of-dance">World of Dance</option>
+                      <option value="zoeys-extraordinary-playlist">Zoey's Extraordinary Playlist</option>
+                    </select>
+                  </label>
+                  <label>Year (Required):
+                    <p>Which year is this link associated with?</p>
+                    <select class="form-control custom-select" id="year_selector">
+                      <option value="2020">2020</option>
+                      <option value="2021">2021</option>
+                      <option value="2022">2022</option>
+                      <option value="2023">2023</option>
+                      <option value="2024">2024</option>
+                    </select>
+                  </label>
+                  <label> Channel (Required):
+                    <p>Where will you post this link?</p>
+                    <select class="form-control custom-select" id="channel_selector">
+                      <option value="social">Social</option>
+                    </select>
+                  </label>
+                  <label>Source (Required):
+                    <p>Where will this link be posted?</p>
+                    <select class="form-control custom-select" id="source_selector">
+                      <option value="twitter">Twitter</option>
+                      <option label="facebook">Facebook</option>
+                      <option label="instagram">Instagram</option>
+                      <option label="instagram-story">Instagram Story</option>
+                      <option label="tumblr">Tumblr</option>
+                      <option label="youtube">YouTube</option>
+                      <option label="reddit">Reddit</option>
+                    </select>
+                  </label>
+                  <label>Episide Number (Optional):
+                    <p>Examples: 101, 102 or 313</p>
+                    <input type="text" id="utm_medium" class="form-control" value="">
+                  </label>
+              </div>
+            </div>
+          </div>
+
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h3 class="panel-title">
+                <a data-toggle="collapse" data-parent="#accordion" href="https://hseitz-branch.github.io/nbcLinkGen/index.html?_branch_match_id=408324887735045681#og_fields" aria-expanded="false" aria-controls="other_fields">
+                  Optional - Often not necessary
+                </a>
+              </h3>
+            </div>
+            <div id="og_fields" class="collapse">
+              <div class="panel-body">
+                <label>OG Title (Optional):
+                  <p>Specifies a title to show if the link is posted on social media.</p>
+                  <input type="text" id="og_title" class="form-control" value="">
+                </label>
+                <label>OG Description (Optional):
+                  <p>Specifies a description to show if the link is posted on social media.</p>
+                  <input type="text" id="og_description" class="form-control" value="">
+                </label>
+                <label>OG Image URL (Optional):
+                  <p>Specifies an image to show if the link is posted on social media.</p>
+                  <input type="text" id="og_image" class="form-control" value="">
+                </label>
+                <!-- Image Upload -->
+                <label>OG Video (Optional):
+                  <p>Specifies a video to show if the link is posted on social media.</p>
+                  <input type="text" id="og_video" class="form-control" value="">
+                </label>
+                <label>OG URL (Optional):
+                  <p>Specifies a url to serve as the canonical identifier of the og info.</p>
+                  <input type="text" id="og_url" class="form-control" value="">
+                </label>
+                <label>OG Type (Optional):
+                  <p>Specifies a type of og content (ie article, book, etc.).</p>
+                  <input type="text" id="og_type" class="form-control" value="">
+                </label>
+                <label>Campaign Override (Optional):
+                  <p>This will override the default utm campaign generated from the above selections.</p>
+                  <input type="text" id="campaign_override" class="form-control" value="">
+                </label>
+
+                <label>Channel/Source Override (Optional):
+                  <p>This will override the default utm source generated from the above selections.</p>
+                  <input type="text" id="source_override" class="form-control" value="">
+                </label>
+
+                <label>Make Quick Link (Optional):
+                  <p>This will allow this link to appear in the Branch Dashboard.</p>
+                  <input type="checkbox" id="quick_link" class="form-control" name="quick_link" value="true" checked="">Yes<br>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h3 class="panel-title">
+                <a data-toggle="collapse" data-parent="#accordion" href="https://hseitz-branch.github.io/nbcLinkGen/index.html?_branch_match_id=408324887735045681#other_fields" aria-expanded="false" aria-controls="other_fields">
+                  Other Fields
+                </a>
+              </h3>
+            </div>
+            <div id="other_fields" class="collapse">
+              <div class="panel-body" id="extra_param_panel_body_domestic">
+                <button class="btn btn-info add-field-btn" onclick="addField(this)">Add Link Parameter</button>
+              </div>
+            </div>
+          </div>
+
+          <button class="btn btn-info" onclick="createLink()">Create Link</button>
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <input type="text" id="final_url" class="form-control" value="Final Link Goes Here" readonly="">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+
+</body></html>
