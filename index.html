@@ -37,9 +37,14 @@
    
      });
    
-   //  var lang_code; if (navigator.languages && navigator.languages.length>0) { lang_code = navigator.languages[0]; } else if (navigator.language) { lang_code = navigator.language; } 
-     // Change Journeys text if language is Spanish (ES) 
- //    if (lang_code == 'es') { branch.setBranchViewData( { data: { "$journeys_title": 'Mi App', "$journeys_description": 'Mi descripción', "$journeys_button_get_has_app": 'Avrir', "$journeys_button_get_no_app": 'Ver', } } ); }
+    var lang_code; if (navigator.languages && navigator.languages.length>0) { lang_code = navigator.languages[0]; } else if (navigator.language) { lang_code = navigator.language; } 
+     //Change Journeys text if language is Spanish (ES) 
+     if (lang_code == 'es') 
+    { branch.setBranchViewData( { data: { "$journeys_title": 'Mi App', "$journeys_description": 'Mi descripción', "$journeys_button_get_has_app": 'Avrir', "$journeys_button_get_no_app": 'Ver',"$journeys_reviews":'(2)' } } ); }
+    
+    if (lang_code == 'en-US') 
+    { branch.setBranchViewData( { data: { "$journeys_title": 'My App', "$journeys_description": 'Mi descripción', "$journeys_button_get_has_app": 'Avrir', "$journeys_button_get_no_app": 'Ver',"$journeys_reviews":'(2)',"$data_star_count":'1' } } ); }
+    
   </script>
   
  
