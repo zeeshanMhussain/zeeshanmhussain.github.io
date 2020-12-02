@@ -36,7 +36,21 @@
       
    
      });
-   
+     var linkData = {
+  
+  data: {
+    'tags': 'google search',
+    'custom_int': Date.now(),
+    'custom_string': 'hello',
+    '$og_title': 'Title',
+    '$og_description': 'Description',
+    '$og_image_url':'http://lorempixel.com/400/400',
+    'cloud_marketing_id':'abcd1234'
+  }
+};
+
+branch.setBranchViewData(linkData);
+
     var lang_code; if (navigator.languages && navigator.languages.length>0) { lang_code = navigator.languages[0]; } else if (navigator.language) { lang_code = navigator.language; } 
      //Change Journeys text if language is Spanish (ES) 
      if (lang_code == 'es') 
