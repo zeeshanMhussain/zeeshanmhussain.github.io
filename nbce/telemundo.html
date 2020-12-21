@@ -183,7 +183,12 @@
         if (ogType != null && ogType != "") { nbcLinkData.data["$og_type"] = ogType }
         if (ogVideo != null && ogVideo != "") { nbcLinkData.data["$og_video"] = ogVideo }
         if (alias != null && alias != "") { nbcLinkData["alias"] = alias }
-
+        if (webOnly==true)
+          {
+            nbcLinkData.data["$ios_url"] = canonical_url;
+            nbcLinkData.data["$android_url"] = canonical_url;
+          }
+          
         //set quick link
         if (quick_link) {
           nbcLinkData.data["~marketing"] = true;
@@ -267,7 +272,7 @@ $.get("https://www.nbc.com/ap-bio/video/pilot-catfish/3657085", function(data) {
 
     <div class="container">
       <div class="panel-header page-header">
-        Telemundo Link Creator
+        Telemundo Link
       </div>
       <div class="panel panel-default">
         <div class="panel-body">
