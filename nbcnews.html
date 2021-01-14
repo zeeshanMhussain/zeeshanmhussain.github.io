@@ -20,9 +20,7 @@
  <meta name="branch:deeplink:landing_screen" content="paywall" />
  <meta property="showJourneys" content="true" />
   <title>Home</title>
-  <script type="text/javascript">
-   
-</script>
+  
  <script>
     
      var t;
@@ -42,46 +40,45 @@
        }
     else
     {
-      branch.init('key_live_fnOUoCncIhW9gknPehW2Rjcprul6XpSa', function(err, data) {
+      branch.init('key_live_fnOUoCncIhW9gknPehW2Rjcprul6XpSa', { 'no_journeys': true } 
+   
+   );
+    /*  branch.init('key_live_fnOUoCncIhW9gknPehW2Rjcprul6XpSa', function(err, data) {
     console.log(err, data);
 
       
    
-     });
+     });*/
     
         }
-   // branch.init('key_live_fnOUoCncIhW9gknPehW2Rjcprul6XpSa', function(err, data) {
-  //  console.log(err, data);
-
-      
-   
-   //  });
-     /*var linkData = {
-      tags: ['google','mobile'],
-  data: {
-    
-    'custom_int': Date.now(),
-    'custom_string': 'hello',
-    '$og_title': 'Title',
-    '$og_description': 'Description',
-    '$og_image_url':'http://lorempixel.com/400/400',
-    'cloud_marketing_id':'abcd1234'
-  }
-};
-
-branch.setBranchViewData(linkData);
-console.log("DATA"+linkData);*/
-  /*  var lang_code; if (navigator.languages && navigator.languages.length>0) { lang_code = navigator.languages[0]; } else if (navigator.language) { lang_code = navigator.language; } 
-     //Change Journeys text if language is Spanish (ES) 
-     if (lang_code == 'es') 
-    { branch.setBranchViewData( { data: { "$journeys_title": 'Mi App', "$journeys_description": 'Mi descripción', "$journeys_button_get_has_app": 'Avrir', "$journeys_button_get_no_app": 'Ver',"$journeys_reviews":'(2)' } } ); }
-    
-    if (lang_code == 'en-US') 
-    { branch.setBranchViewData( { data: { "$journeys_title": 'My App', "$journeys_description": 'Mi descripción', "$journeys_button_get_has_app": 'Avrir', "$journeys_button_get_no_app": 'Ver',"$journeys_reviews":'(2)',"$data_star_count":'1' } } ); }
-    */
+ 
   </script>
   
- 
+  <script type="text/javascript">
+  
+    function ShowBanner() {
+      branch.track('pageview');
+    }
+    
+    </script>
+     <script src= 
+     "https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"> 
+         </script> 
+       
+         <script> 
+             /* Add "https://api.ipify.org?format=json" statement 
+                this will communicate with the ipify servers in 
+                order to retrieve the IP address $.getJSON will 
+                load JSON-encoded data from the server using a 
+                GET HTTP request */ 
+       
+             $.getJSON("https://api.ipify.org?format=json", 
+                                               function(data) { 
+       
+                 // Setting text of element P with id gfg 
+                 $("#gfg").html(data.ip); 
+             }) 
+         </script> 
   <title>Home</title>
 </head>
 <body>
@@ -89,9 +86,15 @@ console.log("DATA"+linkData);*/
   <script>
     var x = navigator.userAgent;
     document.write("User Agent: "+ x);
+  
   </script>  
   <br>Test page
   <br>
   <a href="https://zeeshan.app.link/njM02QuTCcb?tags=Miami&tags=MyLink">Test Link</a>
+  <br>
+  <button onclick="ShowBanner()">Force Show Banner</button>
+<div>
+  <p id="gfg"></p>
+</div>
 </body>
 </html>
