@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logo Color Picker</title>
+    <style>
+        .container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh; /* Center vertically and horizontally */
+        }
+        .logo-box {
+            width: 800px;
+            height: 800px;
+            border: 2px solid #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: white;
+        }
+        .controls {
+            margin-left: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .color-info {
+            margin-top: 20px;
+            text-align: center;
+        }
+         #logoImage {
+            width: 200px; /* Width of the logo */
+            height: 200px; /* Height of the logo */
+            object-fit: contain; /* Maintain aspect ratio */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo-box" id="logoBox">
+            <img src="your-logo.png" alt="Logo" id="logoImage">
+        </div>
+        <div class="controls">
+            <input type="color" id="colorPicker" value="#ffffff">
+            <div class="color-info">
+                <p>HEX: <span id="hexValue">#ffffff</span></p>
+                <p>RGB: <span id="rgbValue">rgb(255, 255, 255)</span></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const logoBox = document.getElementById('logoBox');
+        const colorPicker = document.getElementById('colorPicker');
+        const hexValue = document.getElementById('hexValue');
+        const rgbValue = document.getElementById('rgbValue');
+
+        colorPicker.addEventListener('input', (event) => {
+            const color = event.target.value;
+            logoBox.style.backgroundColor = color;
+            hexValue.textContent = color;
+            rgbValue.textContent = hexToRgb(color);
+        });
+
+        function hexToRgb(hex) {
+            let r = 0, g = 0, b = 0;
+            if (hex.length == 4) {
+                r = "0x" + hex[1] + hex[1];
+                g = "0x" + hex[2] + hex[2];
+                b = "0x" + hex[3] + hex[3];
+            } else if (hex.length == 7) {
+                r = "0x" + hex[1] + hex[2];
+                g = "0x" + hex[3] + hex[4];
+                b = "0x" + hex[5] + hex[6];
+            }
+            return "rgb("+ +r + "," + +g + "," + +b + ")";
+        }
+    </script>
+</body>
+</html>
